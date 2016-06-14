@@ -11,6 +11,7 @@ end
 
 get '/wizards/new' do
   #render new wizard form
+  erb :'wizards/new'
 end
 
 post '/wizards' do
