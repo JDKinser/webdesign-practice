@@ -4,7 +4,9 @@ end
 
 get '/wizards' do
   # call all wizards
+  @wizards = Wizard.all
   # render index
+  erb :'wizards/index'
 end
 
 get '/wizards/new' do
