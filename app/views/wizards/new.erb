@@ -1,0 +1,15 @@
+<h1>New Wizard</h1>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<form id="new_wizard_form" method="POST" action="/wizards">
+  <input type="text" name="wizard[first_name]" placeholder="First Name">
+  <input type="text" name="wizard[last_name]" placeholder="Last Name">
+  <input type="email" name="wizard[email]" placeholder="Email">
+  <input type="password" name="wizard[password]" placeholder="Password">
+  <input type="submit" value="Register">
+</form>
