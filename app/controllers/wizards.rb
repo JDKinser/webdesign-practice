@@ -28,6 +28,33 @@ post '/wizards' do
   end
 end
 
+############################################
+##############login and logout##############
+############################################
+
+get '/wizards/login' do
+  erb :'wizards/login'
+end
+
+post '/wizards/login' do
+  wizard = Wizard.authenticate(params[:wizard][:email], params[:wizard][:password])
+  if wizard
+    session[:wizard_id] = wizard.id
+    redirect '/wizards/profile'
+  else
+    status 422
+    @errors = ['Login Failed']
+    erb :'wizards/login'
+  end
+end
+
+delete "/wizards/logout" do
+  session[:wizard_id] = nil
+  redirect '/wizards/login'
+end
+
+############################################
+
 get '/wizards/:id' do
   #find wizard by id
   #render show page
@@ -49,3 +76,5 @@ delete '/wizards/:id' do
   #delete selected wizard
   #redirect to home page
 end
+
+
