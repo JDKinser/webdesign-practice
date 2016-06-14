@@ -6,9 +6,9 @@ class Wizard < ActiveRecord::Base
   has_secure_password
 
   def self.authenticate(email, password)
-    user = User.find_by(email: email)
-    if user && user.authenticate == password
-      user
+    wizard = Wizard.find_by(email: email)
+    if wizard && wizard.authenticate(password)
+      wizard
     else
       nil
     end
