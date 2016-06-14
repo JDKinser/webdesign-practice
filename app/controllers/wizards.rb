@@ -16,8 +16,16 @@ end
 
 post '/wizards' do
   #create new instance of wizard
+  @wizards = Wizard.new(params[:wizard])
   #save new wizard
+  if @wizards.save
   #redirect to home page
+    redirect '/'
+  else
+    status 422
+    @errors = @wizards.errors.full_messages
+    erb :'wizards/new'
+  end
 end
 
 get '/wizards/:id' do
