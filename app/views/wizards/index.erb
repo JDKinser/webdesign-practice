@@ -1,1 +1,10 @@
 <h1>Home</h1>
+
+<% @wizards.each do |wizard| %>
+<ul>
+  <li>ID: <%= wizard.id %></li>
+  <li>First Name: <%= wizard.first_name %></li>
+  <li>Last Name: <%= wizard.last_name %></li>
+  <li>Email: <%= wizard.email %></li>
+</ul>
+<% end %>
